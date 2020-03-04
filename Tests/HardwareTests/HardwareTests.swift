@@ -10,4 +10,10 @@ final class HardwareTests: XCTestCase {
         XCTAssertEqual(id?.count, 17)
         XCTAssertEqual(id?.filter({ $0 == ":" }).count, 5)
     }
+    
+    func testSerialNumber() {
+        let device = Device.main
+        let serial = device.serial
+        XCTAssertNotNil(serial)
+    }
 }
