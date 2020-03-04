@@ -41,7 +41,8 @@ final class HardwareTests: XCTestCase {
     
     func testSystem() {
         print("System is \(Device.main.system.name)")
-        print("System Version is \(Device.main.system.version)")
+        print("Version is \(Device.main.system.versionString)")
+        print("Full Version is \(Device.main.system.fullVersionString)")
     }
     
     func testHostName() {

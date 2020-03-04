@@ -17,17 +17,6 @@ public struct Device {
     #if canImport(IOKit)
     let service = IOService()
     #endif
-
-    struct System {
-        let name: String
-        let version: OperatingSystemVersion
-        
-        init() {
-            let info = ProcessInfo.processInfo
-            name = info.operatingSystemVersionString
-            version = info.operatingSystemVersion
-        }
-    }
     
     lazy var hostName = ProcessInfo.processInfo.hostName
     lazy var system = System()
