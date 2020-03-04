@@ -3,7 +3,7 @@ import XCTest
 
 final class HardwareTests: XCTestCase {
     func testDeviceIdentifier() {
-        let device = Device()
+        let device = Device.main
         
         let id = device.identifier
         XCTAssertNotNil(id)

@@ -6,6 +6,11 @@
 import Foundation
 
 public struct Device {
+    public static var main: Device = Device()
+
+    fileprivate init() {
+    }
+    
     public var identifier: String? {
         let interfaces = EthernetInterface.interfaces(primaryOnly: true)
         return interfaces.macAddresses.last?.string
