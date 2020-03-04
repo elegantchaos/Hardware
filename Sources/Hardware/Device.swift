@@ -9,16 +9,33 @@ import Foundation
 import UIKit
 #endif
 
+/// Abstraction of the hardware device we're running on.
+/// (also incorporates some values from ProcessInfo.processInfo which don't vary per-process)
 public struct Device {
     public static var main: Device = Device()
 
     #if canImport(IOKit)
     let service = IOService()
     #endif
+
+    struct System {
+        let name: String
+        let version: OperatingSystemVersion
+        
+        init() {
+            let info = ProcessInfo.processInfo
+            name = info.operatingSystemVersionString
+            version = info.operatingSystemVersion
+        }
+    }
+    
+    lazy var hostName = ProcessInfo.processInfo.hostName
+    lazy var system = System()
+    lazy var user = NSFullUserName()
     
     fileprivate init() {
     }
-    
+
     public var identifier: String? {
         #if canImport(IOKit)
         let interfaces = EthernetInterface.interfaces(primaryOnly: true)

@@ -14,6 +14,11 @@ final class HardwareTests: XCTestCase {
         #else
         XCTAssertEqual(id?.count, 36) // should be a 36-char UUID
         #endif
+
+        if let id = id {
+            print("Device id is \(id).")
+        }
+
     }
     
     func testSerialNumber() {
@@ -21,6 +26,26 @@ final class HardwareTests: XCTestCase {
         let device = Device.main
         let serial = device.serial
         XCTAssertNotNil(serial)
+        if let serial = serial {
+            print("Serial is \(serial).")
+        }
         #endif
+    }
+    
+    func testUser() {
+        print("User is \(Device.main.user).")
+        #if os(macOS)
+        XCTAssertFalse(Device.main.user.isEmpty)
+        #endif
+    }
+    
+    func testSystem() {
+        print("System is \(Device.main.system.name)")
+        print("System Version is \(Device.main.system.version)")
+    }
+    
+    func testHostName() {
+        print("Host name is \(Device.main.hostName)")
+        XCTAssertFalse(Device.main.hostName.isEmpty)
     }
 }

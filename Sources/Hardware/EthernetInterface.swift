@@ -3,7 +3,11 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+import Foundation
+
 #if canImport(IOKit)
+import IOKit
+
 public class EthernetInterface: IOObject {
     class func interfaces(primaryOnly: Bool = false) -> EthernetInterfaceIterator {
         // see https://stackoverflow.com/questions/31835418/how-to-get-mac-address-from-os-x-with-swift
