@@ -2,14 +2,12 @@ import XCTest
 @testable import Hardware
 
 final class HardwareTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Hardware().text, "Hello, World!")
+    func testDeviceIdentifier() {
+        let device = Device()
+        
+        let id = device.identifier
+        XCTAssertNotNil(id)
+        XCTAssertEqual(id?.count, 17)
+        XCTAssertEqual(id?.filter({ $0 == ":" }).count, 5)
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }

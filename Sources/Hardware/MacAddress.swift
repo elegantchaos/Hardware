@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct MacAddress {
+public struct MacAddress {
     public let raw: Data
 
     public var hex: [String] {

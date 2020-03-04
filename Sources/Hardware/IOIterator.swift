@@ -5,24 +5,24 @@
 
 import IOKit
 
-public class IOIterator: IOObject {
-    func next() -> IOObject? {
-        return IOObject(alreadyRetained: IOIteratorNext(object))
-    }
+public class IOIterator<ObjectType> where ObjectType: IOObject {
+    let iterator: IOObject?
     
-    func forEach(iterator: (IOObject) -> ()) {
-        while let object = next() {
-                iterator(object)
+    init(_ iterator: IOObject?) {
+        self.iterator = iterator
+    }
+
+    func next() -> ObjectType? {
+        if let iterator = iterator {
+            return ObjectType(alreadyRetained: IOIteratorNext(iterator.object))
+        } else {
+            return nil
         }
     }
     
-    var macAddresses: [MacAddress] {
-        var results: [MacAddress] = []
-        forEach(iterator: { interface in
-            if let address = interface.macAddress {
-                results.append(address)
-            }
-        })
-        return results
+    func forEach(performBlock: (ObjectType) -> ()) {
+        while let object = next() {
+                performBlock(object)
+        }
     }
 }
