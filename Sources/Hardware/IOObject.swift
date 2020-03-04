@@ -3,8 +3,8 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+#if canImport(IOKit)
 import IOKit
-import Foundation
 
 public class IOObject {
     let object: io_object_t
@@ -24,3 +24,4 @@ public class IOObject {
         IOObjectRelease(object)
     }
 }
+#endif

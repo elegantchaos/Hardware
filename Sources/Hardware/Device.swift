@@ -5,20 +5,34 @@
 
 import Foundation
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
 public struct Device {
     public static var main: Device = Device()
 
+    #if canImport(IOKit)
     let service = IOService()
+    #endif
     
     fileprivate init() {
     }
     
     public var identifier: String? {
+        #if canImport(IOKit)
         let interfaces = EthernetInterface.interfaces(primaryOnly: true)
         return interfaces.macAddresses.last?.string
+        #else
+        return UIDevice.current.identifierForVendor?.uuidString
+        #endif
     }
     
     public var serial: String? {
+        #if canImport(IOKit)
         return service.expertDevice?.string(forKey: "IOPlatformSerialNumber")
+        #else
+        return nil // TODO: implement this on iOS?
+        #endif
     }
 }

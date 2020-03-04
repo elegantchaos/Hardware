@@ -7,13 +7,20 @@ final class HardwareTests: XCTestCase {
         
         let id = device.identifier
         XCTAssertNotNil(id)
-        XCTAssertEqual(id?.count, 17)
+        
+        #if canImport(IOKit)
+        XCTAssertEqual(id?.count, 17) // should be a 17-char MAC address
         XCTAssertEqual(id?.filter({ $0 == ":" }).count, 5)
+        #else
+        XCTAssertEqual(id?.count, 36) // should be a 36-char UUID
+        #endif
     }
     
     func testSerialNumber() {
+        #if canImport(IOKit)
         let device = Device.main
         let serial = device.serial
         XCTAssertNotNil(serial)
+        #endif
     }
 }

@@ -3,6 +3,7 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+#if canImport(IOKit)
 import IOKit
 
 public class IOService {
@@ -12,3 +13,4 @@ public class IOService {
         return IORegistryEntry(alreadyRetained: IOServiceGetMatchingService(port, IOServiceMatching("IOPlatformExpertDevice")))
     }
 }
+#endif

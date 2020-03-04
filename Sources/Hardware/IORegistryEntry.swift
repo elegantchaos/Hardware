@@ -3,6 +3,7 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+#if canImport(IOKit)
 import IOKit
 
 public class IORegistryEntry: IOObject {
@@ -11,3 +12,4 @@ public class IORegistryEntry: IOObject {
         return unmanagedString?.takeRetainedValue() as? String
     }
 }
+#endif

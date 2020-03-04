@@ -3,6 +3,7 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+#if canImport(IOKit)
 import IOKit
 
 public class IOIterator<ObjectType> where ObjectType: IOObject {
@@ -26,3 +27,4 @@ public class IOIterator<ObjectType> where ObjectType: IOObject {
         }
     }
 }
+#endif
