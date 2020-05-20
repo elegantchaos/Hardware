@@ -12,7 +12,7 @@ import UIKit
 
 extension OperatingSystemVersion {
     var asString: String {
-        patchVersion == 0 ? "\(majorVersion).\(minorVersion)" : "\(majorVersion).\(minorVersion).\(patchVersion)"
+        return patchVersion == 0 ? "\(majorVersion).\(minorVersion)" : "\(majorVersion).\(minorVersion).\(patchVersion)"
     }
 }
 
