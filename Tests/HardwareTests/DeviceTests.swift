@@ -49,4 +49,36 @@ final class HardwareTests: XCTestCase {
         print("Host name is \(Device.main.hostName)")
         XCTAssertFalse(Device.main.hostName.isEmpty)
     }
+    
+    func testIsSimulator() {
+        #if targetEnvironment(simulator)
+        XCTAssertTrue(Device.main.platform.isSimulator)
+        #else
+        XCTAssertFalse(Device.main.platform.isSimulator)
+        #endif
+    }
+    
+    func testIsCatalyst() {
+        #if targetEnvironment(macCatalyst)
+        XCTAssertTrue(Device.main.platform.isCatalyst)
+        #else
+        XCTAssertFalse(Device.main.platform.isCatalyst)
+        #endif
+    }
+    
+    func testIsAppKit() {
+        #if os(macOS) && !targetEnvironment(macCatalyst)
+        XCTAssertTrue(Device.main.platform.isAppKit)
+        #else
+        XCTAssertFalse(Device.main.platform.isAppKit)
+        #endif
+    }
+    
+    func testIsUIKit() {
+        #if os(iOS) || os(tvOS) || (os(macOS) && targetEnvironment(macCatalyst))
+        XCTAssertTrue(Device.main.platform.isUIKit)
+        #else
+        XCTAssertFalse(Device.main.platform.isUIKit)
+        #endif
+    }
 }
