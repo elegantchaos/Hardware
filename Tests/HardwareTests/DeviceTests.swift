@@ -6,12 +6,14 @@ final class HardwareTests: XCTestCase {
         let device = Device.main
         
         let id = device.identifier
+        #if !os(Linux)
         XCTAssertNotNil(id)
+        #endif
         
         #if canImport(IOKit)
         XCTAssertEqual(id?.count, 17) // should be a 17-char MAC address
         XCTAssertEqual(id?.filter({ $0 == ":" }).count, 5)
-        #else
+        #elseif os(macOS)
         XCTAssertEqual(id?.count, 36) // should be a 36-char UUID
         #endif
 
@@ -79,6 +81,14 @@ final class HardwareTests: XCTestCase {
         XCTAssertTrue(Device.main.system.platform.isUIKit)
         #else
         XCTAssertFalse(Device.main.system.platform.isUIKit)
+        #endif
+    }
+    
+    func testIsLinux() {
+        #if os(Linux)
+        XCTAssertTrue(Device.main.system.platform.isLinux)
+        #else
+        XCTAssertFalse(Device.main.system.platform.isLinux)
         #endif
     }
 }

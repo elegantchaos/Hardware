@@ -64,4 +64,5 @@ public struct Platform {
     public var isAppKit: Bool { return base == .macOS && variant == .normal }
     public var isUIKit: Bool { return base == .iOS || base == .tvOS || isCatalyst }
     public var isSimulator: Bool { return variant == .simulator }
+    public var isLinux: Bool { return base == .linux }
 }

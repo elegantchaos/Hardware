@@ -33,8 +33,11 @@ public struct System {
         let device = UIDevice.current
         name = device.systemName
         versionString = device.systemVersion
-        #else
+        #elseif os(macOS)
         name = "Mac OS X"
+        versionString = version.asString
+        #elseif os(Linux)
+        name = "Linux"
         versionString = version.asString
         #endif
         

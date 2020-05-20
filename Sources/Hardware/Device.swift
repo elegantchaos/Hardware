@@ -29,8 +29,10 @@ public struct Device {
         #if canImport(IOKit)
         let interfaces = EthernetInterface.interfaces(primaryOnly: true)
         return interfaces.macAddresses.last?.string
-        #else
+        #elseif canImport(UIKit)
         return UIDevice.current.identifierForVendor?.uuidString
+        #else
+        return nil
         #endif
     }
     
