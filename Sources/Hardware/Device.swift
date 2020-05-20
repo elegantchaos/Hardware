@@ -14,18 +14,13 @@ import UIKit
 public struct Device {
     public static var main: Device = Device()
 
-
-
-
-    
     #if canImport(IOKit)
-    let service = IOService()
+    internal let service = IOService()
     #endif
     
-    lazy var hostName = ProcessInfo.processInfo.hostName
-    lazy var system = System()
-    lazy var user = NSFullUserName()
-    lazy var platform = Platform.current
+    public lazy var hostName = ProcessInfo.processInfo.hostName
+    public lazy var system = System()
+    public lazy var user = NSFullUserName()
 
     fileprivate init() {
     }

@@ -52,33 +52,33 @@ final class HardwareTests: XCTestCase {
     
     func testIsSimulator() {
         #if targetEnvironment(simulator)
-        XCTAssertTrue(Device.main.platform.isSimulator)
+        XCTAssertTrue(Device.main.system.platform.isSimulator)
         #else
-        XCTAssertFalse(Device.main.platform.isSimulator)
+        XCTAssertFalse(Device.main.system.platform.isSimulator)
         #endif
     }
     
     func testIsCatalyst() {
         #if targetEnvironment(macCatalyst)
-        XCTAssertTrue(Device.main.platform.isCatalyst)
+        XCTAssertTrue(Device.main.system.platform.isCatalyst)
         #else
-        XCTAssertFalse(Device.main.platform.isCatalyst)
+        XCTAssertFalse(Device.main.system.platform.isCatalyst)
         #endif
     }
     
     func testIsAppKit() {
         #if os(macOS) && !targetEnvironment(macCatalyst)
-        XCTAssertTrue(Device.main.platform.isAppKit)
+        XCTAssertTrue(Device.main.system.platform.isAppKit)
         #else
-        XCTAssertFalse(Device.main.platform.isAppKit)
+        XCTAssertFalse(Device.main.system.platform.isAppKit)
         #endif
     }
     
     func testIsUIKit() {
         #if os(iOS) || os(tvOS) || (os(macOS) && targetEnvironment(macCatalyst))
-        XCTAssertTrue(Device.main.platform.isUIKit)
+        XCTAssertTrue(Device.main.system.platform.isUIKit)
         #else
-        XCTAssertFalse(Device.main.platform.isUIKit)
+        XCTAssertFalse(Device.main.system.platform.isUIKit)
         #endif
     }
 }

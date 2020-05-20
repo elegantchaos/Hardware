@@ -16,17 +16,19 @@ extension OperatingSystemVersion {
     }
 }
 
-struct System {
-    let name: String
-    let versionString: String
-    let fullVersionString: String
-    let version: OperatingSystemVersion
-    
+public struct System {
+    public let name: String
+    public let versionString: String
+    public let fullVersionString: String
+    public let version: OperatingSystemVersion
+    public let platform: Platform
+
     init() {
         let info = ProcessInfo.processInfo
         version = info.operatingSystemVersion
         fullVersionString = info.operatingSystemVersionString
-        
+        platform = Platform.current
+
         #if canImport(UIKit)
         let device = UIDevice.current
         name = device.systemName
