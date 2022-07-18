@@ -4,6 +4,6 @@
     "swiftLatest"
   ],
   "platforms" : [
-      "macOS", "iOS", "tvOS", "watchOS", "linux"
+      "macOS", "iOS", "tvOS", "linux"
   ]
 }
