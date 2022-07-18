@@ -8,7 +8,7 @@ import IOKit
 
 public class IOIterator<ObjectType> where ObjectType: IOObject {
     let iterator: IOObject?
-    
+
     init(_ iterator: IOObject?) {
         self.iterator = iterator
     }
@@ -20,10 +20,10 @@ public class IOIterator<ObjectType> where ObjectType: IOObject {
             return nil
         }
     }
-    
-    func forEach(performBlock: (ObjectType) -> ()) {
+
+    func forEach(performBlock: (ObjectType) -> Void) {
         while let object = next() {
-                performBlock(object)
+            performBlock(object)
         }
     }
 }

@@ -3,7 +3,6 @@
 //  All code (c) 2020 - present day, Elegant Chaos Limited.
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-
 import Foundation
 
 #if canImport(UIKit)
@@ -12,7 +11,7 @@ import UIKit
 
 extension OperatingSystemVersion {
     var asString: String {
-        return patchVersion == 0 ? "\(majorVersion).\(minorVersion)" : "\(majorVersion).\(minorVersion).\(patchVersion)"
+        patchVersion == 0 ? "\(majorVersion).\(minorVersion)" : "\(majorVersion).\(minorVersion).\(patchVersion)"
     }
 }
 
@@ -25,21 +24,20 @@ public struct System {
 
     init() {
         let info = ProcessInfo.processInfo
-        version = info.operatingSystemVersion
-        fullVersionString = info.operatingSystemVersionString
-        platform = Platform.current
+        self.version = info.operatingSystemVersion
+        self.fullVersionString = info.operatingSystemVersionString
+        self.platform = Platform.current
 
         #if canImport(UIKit)
         let device = UIDevice.current
-        name = device.systemName
-        versionString = device.systemVersion
+        self.name = device.systemName
+        self.versionString = device.systemVersion
         #elseif os(macOS)
-        name = "Mac OS X"
-        versionString = version.asString
+        self.name = "Mac OS X"
+        self.versionString = version.asString
         #elseif os(Linux)
-        name = "Linux"
-        versionString = version.asString
+        self.name = "Linux"
+        self.versionString = version.asString
         #endif
-        
     }
 }

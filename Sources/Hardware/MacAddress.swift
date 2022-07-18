@@ -9,11 +9,10 @@ public struct MacAddress {
     public let raw: Data
 
     public var hex: [String] {
-        return raw.map({ String(format:"%02x", $0) })
+        raw.map { String(format: "%02x", $0) }
     }
-    
+
     public var string: String {
-        return hex.joined(separator: ":")
+        hex.joined(separator: ":")
     }
 }
-

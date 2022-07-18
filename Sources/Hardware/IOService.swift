@@ -8,9 +8,9 @@ import IOKit
 
 public class IOService {
     let port = kIOMasterPortDefault
-    
+
     var expertDevice: IORegistryEntry? {
-        return IORegistryEntry(alreadyRetained: IOServiceGetMatchingService(port, IOServiceMatching("IOPlatformExpertDevice")))
+        IORegistryEntry(alreadyRetained: IOServiceGetMatchingService(port, IOServiceMatching("IOPlatformExpertDevice")))
     }
 }
 #endif

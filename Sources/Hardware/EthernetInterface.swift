@@ -13,18 +13,17 @@ public class EthernetInterface: IOObject {
         // see https://stackoverflow.com/questions/31835418/how-to-get-mac-address-from-os-x-with-swift
         let matcher = IOServiceMatching("IOEthernetInterface") as NSMutableDictionary
         if primaryOnly {
-            matcher["IOPropertyMatch"] = [ "IOPrimaryInterface" : true]
+            matcher["IOPropertyMatch"] = ["IOPrimaryInterface": true]
         }
 
-        var interfaces : io_iterator_t = 0
-        if IOServiceGetMatchingServices(kIOMasterPortDefault, matcher, &interfaces) != KERN_SUCCESS {
-        }
-        
+        var interfaces: io_iterator_t = 0
+        if IOServiceGetMatchingServices(kIOMasterPortDefault, matcher, &interfaces) != KERN_SUCCESS {}
+
         return EthernetInterfaceIterator(IOObject(alreadyRetained: interfaces))
     }
 
     public var macAddress: MacAddress? {
-        var service : io_object_t = 0
+        var service: io_object_t = 0
         if IORegistryEntryGetParentEntry(object, "IOService", &service) == KERN_SUCCESS {
             defer { IOObjectRelease(service) }
             let unmanagedData = IORegistryEntryCreateCFProperty(service, "IOMACAddress" as CFString, kCFAllocatorDefault, 0)
@@ -32,7 +31,7 @@ public class EthernetInterface: IOObject {
                 return MacAddress(raw: data)
             }
         }
-        
+
         return nil
     }
 }
@@ -40,7 +39,7 @@ public class EthernetInterface: IOObject {
 public class EthernetInterfaceIterator: IOIterator<EthernetInterface> {
     var macAddresses: [MacAddress] {
         var results: [MacAddress] = []
-        forEach() { interface in
+        forEach { interface in
             if let address = interface.macAddress {
                 results.append(address)
             }

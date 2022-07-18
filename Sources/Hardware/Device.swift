@@ -12,18 +12,17 @@ import UIKit
 /// Abstraction of the hardware device we're running on.
 /// (also incorporates some values from ProcessInfo.processInfo which don't vary per-process)
 public struct Device {
-    public static var main: Device = Device()
+    public static var main: Device = .init()
 
     #if canImport(IOKit)
     internal let service = IOService()
     #endif
-    
+
     public lazy var hostName = ProcessInfo.processInfo.hostName
     public lazy var system = System()
     public lazy var user = NSFullUserName()
 
-    fileprivate init() {
-    }
+    private init() {}
 
     public var identifier: String? {
         #if canImport(IOKit)
@@ -35,7 +34,7 @@ public struct Device {
         return nil
         #endif
     }
-    
+
     public var serial: String? {
         #if canImport(IOKit)
         return service.expertDevice?.string(forKey: "IOPlatformSerialNumber")

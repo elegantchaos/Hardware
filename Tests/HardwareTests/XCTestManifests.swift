@@ -19,7 +19,7 @@ extension HardwareTests {
 }
 
 public func __allTests() -> [XCTestCaseEntry] {
-    return [
+    [
         testCase(HardwareTests.__allTests__HardwareTests),
     ]
 }
