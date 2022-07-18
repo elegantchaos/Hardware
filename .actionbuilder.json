@@ -1,0 +1,9 @@
+{
+  "compilers" : [
+    "swift56",
+    "swiftLatest"
+  ],
+  "platforms" : [
+      "macOS", "iOS", "tvOS", "watchOS", "linux"
+  ]
+}
