@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         
         // development tools
-        .package(url: "https://github.com/elegantchaos/ActionBuilderPlugin.git", from: "1.0.0"),
+        .package(url: "https://github.com/elegantchaos/ActionBuilderPlugin.git", from: "1.0.6"),
         .package(url: "https://github.com/elegantchaos/SwiftFormatterPlugin.git", from: "1.0.3"),
     ],
     

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/elegantchaos/ActionBuilderCore",
       "state" : {
-        "revision" : "28d012a8cbb174309e2a7ae59311d356b219757f",
-        "version" : "1.0.6"
+        "revision" : "897566bceedd34d2ced2e134fb85f06f2e8dd449",
+        "version" : "1.0.8"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/elegantchaos/ActionBuilderPlugin.git",
       "state" : {
-        "revision" : "6a9ab6a120e176cfa8401153f672a74de0b33730",
-        "version" : "1.0.4"
+        "revision" : "e70ff7b65a77443f20bc9146639b76e280f2afb5",
+        "version" : "1.0.6"
       }
     },
     {
